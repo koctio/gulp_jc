@@ -1,0 +1,32 @@
+@import "libs";
+
+@import "compass/typography/links";
+@import "compass/css3/selection";
+@import "compass/utilities/sprites";
+$ico-sprite-dimensions: true;
+
+@import "icondoc/*.png";
+
+.docum ul {
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    li{
+        a{
+            padding-left:17px;
+            &[href*='html']{@include icondoc-sprite(html);}
+            &[href*='dwg']{@include icondoc-sprite(acad);}
+            &[href*='vsd']{@include icondoc-sprite(visio);}
+            &[href*='xlsx']{@include icondoc-sprite(excel);}
+            &[href*='jpg']{@include icondoc-sprite(jpg);}
+            &[href*='pdf']{@include icondoc-sprite(pdf);}
+            &[href*='docx']{@include icondoc-sprite(word);}
+        }
+    }
+}
+
+.test{
+    background-color: #ccc;
+    margin:20px;
+    padding: 5px;
+}
