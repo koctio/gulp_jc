@@ -3367,7 +3367,10 @@ img.mfp-img {
   margin: 0;
   padding: 0; }
   .docum ul li a {
-    padding-left: 17px; }
+    padding-left: 17px;
+    display: block;
+    width: 16px;
+    height: 16px; }
     .docum ul li a[href*='html'] {
       background-position: 0 -64px; }
       .docum ul li a[href*='html']:hover, .docum ul li a[href*='html'].html-hover {
