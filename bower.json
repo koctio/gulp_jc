@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
+  },
+  "devDependencies": {
     "jquery": "^3.4.1"
   }
 }
