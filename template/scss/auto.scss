@@ -1,37 +1,276 @@
 @import "libs";
+body{font-family: 'Roboto', sans-serif;}
 
-@import "compass/typography/links";
-@import "compass/css3/selection";
-@import "compass/utilities/sprites";
-$ico-sprite-dimensions: true;
-
-@import "icondoc/*.png";
-
-body{background: #000;}
-
-.docum ul {
-    list-style-type:none;
-    margin: 0;
-    padding: 0;
-    li{
-        a{
-            padding-left:17px;
-            display: block;
-            width: 16px;
-            height: 16px;
-            &[href*='html']{@include icondoc-sprite(html);}
-            &[href*='dwg']{@include icondoc-sprite(acad);}
-            &[href*='vsd']{@include icondoc-sprite(visio);}
-            &[href*='xlsx']{@include icondoc-sprite(excel);}
-            &[href*='jpg']{@include icondoc-sprite(jpg);}
-            &[href*='pdf']{@include icondoc-sprite(pdf);}
-            &[href*='docx']{@include icondoc-sprite(word);}
+.grid{
+    display: grid;
+    grid-template-areas: "a a a a a a b b b"
+                         "c c c c d d d d d"
+                         "c c c c e e e e e"
+                         "f f f g g g g g g";
+    @media(max-width:700px){
+        grid-template-areas:"a" "b" "c" "d" "e" "f" "g";
+    }
+    
+    h2{
+        font-size: 45px;
+        @extend %grid-h;
+    }
+    h3{
+        font-size: 42px;
+        @extend %grid-h;
+    }
+    h4{
+        font-size: 40px;
+        @extend %grid-h;
+    }
+    %grid-item-center{
+        @media(max-width:700px){
+            text-align: center;
         }
+    }
+    %grid-h{
+        font-weight: 200;
+        margin-top: 0;
+        letter-spacing: 1px;
+        span{
+            font-weight: 900;
+        }
+        @media(max-width:1000px){
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+    }
+    p{
+        font-size: 15.57px;
+        line-height: 28px;
+        margin-bottom: 0;
+        @media(max-width:1000px){
+            font-size: 13px;
+            line-height: 22px;
+        }
+    }
+    a, input, textarea{
+        font-size: 16.57px;
+        @media(max-width:1000px){
+            font-size: 13px;
+        }
+    }
+    a{
+        color:#fff;
+        text-decoration: none;
+        border: 1px solid white;
+        border-radius: 10px;
+        display: block;
+        padding: 15px 0;
+        max-width: 211px;
+        text-align: center;
+        margin-top: 48px;
+        @media(max-width:1000px){
+            margin-top: 25px;
+        }
+        @media(max-width:700px){
+            margin: 25px auto 0;
+        }
+    }
+    .span{
+        display: block;
+        @media(max-width:700px){
+            display: initial;
+        }
+    }
+    %grid-item{
+        background:{
+            size: cover;
+            position: center center;
+            repeat: no-repeat;
+        }
+    }
+    %grid-item-color{
+        color:#fff;
+    }
+    %grid-item-padding{
+        padding: 64px 59px 70px 59px;
+        @media(max-width:1000px){
+            padding: 40px 30px;
+        }
+    }
+    &-item{
+        &-bg{
+            background-image: url(../i/grid_css/bg.jpg);
+            grid-area: a;
+            @extend %grid-item;
+        }
+        &-grey{
+            background-color: #f3f3f3;
+            @extend %grid-item-padding;
+            grid-area: b;
+            button{
+                background:{
+                    image: url(../i/grid_css/menu.svg);
+                    color:transparent;
+                }
+                display: block;
+                width: 33px;
+                height: 33px;
+                border:none;
+                margin-bottom: 64px;
+                @media(max-width:1000px){
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        &-blue{
+            background-image: url(../i/grid_css/blue.jpg);
+            grid-area: c;
+            @extend %grid-item;
+            @extend %grid-item-color;
+            @extend %grid-item-padding;
+            &>div{
+                margin-bottom: 122px;
+                &:last-child{
+                    @media(max-width:1000px){
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+        &-beige{
+            background-image: url(../i/grid_css/beige.jpg);
+            grid-area: d;
+            @extend %grid-item;
+            @extend %grid-item-padding;
+            @extend %grid-item-center;/*@media*/
+            a{
+                color: #000;
+                border: 1px solid black;
+            }
+        }
+        &-black{
+            background-image: url(../i/grid_css/black.jpg);
+            grid-area: e;
+            @extend %grid-item;
+            @extend %grid-item-color;
+            @extend %grid-item-padding;
+            @extend %grid-item-center;/*@media*/
+        }
+        &-human{
+            background-image: url(../i/grid_css/human.jpg);
+            grid-area: f;
+            display: flex;
+            align-content: space-between;
+            flex-wrap: wrap;
+            min-height: 715px;
+            &>div{
+                width: 100%;
+            }
+            @media(max-width:1000px){
+                min-height: inherit;
+            }
+
+            @extend %grid-item;
+            @extend %grid-item-color;
+            @extend %grid-item-padding;
+            @extend %grid-item-center;/*@media*/
+            justify-content: center;
+            .logo{
+                display: block;
+                width: 90px;
+                height: 90px;
+                border-radius: 10px;
+                background: url(../i/grid_css/logo.png) no-repeat;
+                margin-bottom: 27px;
+                @media(max-width:1000px){
+                    width: 70px;
+                    height: 70px;
+                    background-size: cover;
+                }
+                @media(max-width:700px){
+                    margin: 0 auto 25px;
+                }
+            }
+        }
+        &-green{
+            background-image: url(../i/grid_css/green.jpg);
+            grid-area: g;
+            display: flex;
+            align-content: space-between;
+            flex-wrap: wrap;
+            min-height: 715px;
+            @media(max-width:1000px){
+                min-height: inherit;
+            }
+            @extend %grid-item;
+            @extend %grid-item-color;
+            @extend %grid-item-padding;
+            @extend %grid-item-center;/*@media*/
+            &>div{
+                width: 100%;
+            }
+            .list{
+                list-style-type: none;
+                display: flex;
+                justify-content: flex-start;
+                padding: 0;
+                @media(max-width:700px){
+                    justify-content: center;
+                }
+                li{
+                    margin-right: 10px;
+                    a{
+                        background:{
+                            repeat: no-repeat;
+                        }
+                        width: 45px;
+                        height: 45px;
+                        display: block;
+                        padding: 0;
+                        border: none;
+                        margin-top:0;
+                        &.list-fb{
+                            background-image: url(../i/grid_css/f.png);
+                        }
+                        &.list-dr{
+                            background-image: url(../i/grid_css/d.png);
+                        }
+                        &.list-tw{
+                            background-image: url(../i/grid_css/t.png);
+                        }
+                    }
+                }
+            }
+            %grid-item-form{
+                border: 1px solid white;
+                border-radius: 10px;    
+                background-color: transparent;
+                margin-bottom: 12px;
+                padding: 19px 27px;
+                &::placeholder{
+                    color:#fff;
+                }
+            }
+            .form{
+                max-width: 619px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content:space-between;
+
+                textarea{
+                    width: 100%;
+                    min-height: 122px;
+                    @extend %grid-item-form;
+                }
+                input{
+                    width: calc(48% - 54px);
+                    @extend %grid-item-form;
+                }
+            }
+        }
+
+        
+       
+        
     }
 }
 
-.test{
-    background-color: #ccc;
-    margin:20px;
-    padding: 5px;
-}
+
+
